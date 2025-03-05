@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace habilitations2024.Properties
+namespace Habilitations2024.Properties
 {
 
 
