@@ -16,7 +16,7 @@ namespace Habilitations2024
             this.connection = new MySqlConnection(chaineConnection);
             this.connection.Open();
         }
-        public static BddManager getInstance(string chaineConnection)
+        public static BddManager GetInstance(string chaineConnection)
         {
             if (BddManager.instance == null)
             {
@@ -27,7 +27,7 @@ namespace Habilitations2024
 
         private readonly MySqlConnection connection;
 
-        public void reqUpdate(string requete, Dictionary<string, object> parameters = null)
+        public void ReqUpdate(string requete, Dictionary<string, object> parameters = null)
         {
             MySqlCommand command = new MySqlCommand(requete, connection);
             if (!(parameters is null))
@@ -39,6 +39,33 @@ namespace Habilitations2024
             }
             command.Prepare();
             command.ExecuteNonQuery();
+        }
+
+        public List<Object[]> ReqSelect(string requete, Dictionary<string, object> parameters = null)
+        {
+            MySqlCommand command = new MySqlCommand(requete, connection);
+            if (!(parameters is null))
+            {
+                foreach (KeyValuePair<string, object> parameter in parameters)
+                {
+                    command.Parameters.Add(new MySqlParameter(parameter.Key, parameter.Value));
+                }
+            }
+            command.Prepare();
+            MySqlDataReader curseur = command.ExecuteReader();
+            List<Object[]> records = new List<Object[]>();
+            int nbCols = curseur.FieldCount;
+            bool finCurseur = !curseur.Read();
+            while (!finCurseur)
+            {
+                Object[] attributs = new Object[nbCols];
+                curseur.GetValues(attributs);
+                records.Add(attributs);
+                finCurseur = !curseur.Read();
+            }
+            
+            curseur.Close();
+            return records;
         }
 
     }
