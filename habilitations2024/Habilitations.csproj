@@ -51,12 +51,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bddmanager\BddManager.cs" />
+    <Compile Include="controller\FrmAuthentificationController.cs" />
     <Compile Include="controller\FrmHabilitationsController.cs" />
     <Compile Include="dal\Access.cs" />
     <Compile Include="dal\DeveloppeurAccess.cs" />
     <Compile Include="dal\ProfilAccess.cs" />
+    <Compile Include="model\Admin.cs" />
     <Compile Include="model\Developpeur.cs" />
     <Compile Include="model\Profil.cs" />
+    <Compile Include="view\FrmAuthentification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\FrmAuthentification.Designer.cs">
+      <DependentUpon>FrmAuthentification.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\FrmHabilitations.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +73,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="view\FrmAuthentification.resx">
+      <DependentUpon>FrmAuthentification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\FrmHabilitations.resx">
       <DependentUpon>FrmHabilitations.cs</DependentUpon>
     </EmbeddedResource>

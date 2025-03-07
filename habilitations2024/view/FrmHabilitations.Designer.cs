@@ -317,6 +317,7 @@
             this.Controls.Add(this.groupDisplay);
             this.Name = "FrmHabilitations";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmHabilitations_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupDisplay.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataDevs)).EndInit();

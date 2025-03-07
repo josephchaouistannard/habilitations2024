@@ -20,6 +20,31 @@ namespace habilitations2024.dal
             this.access = Access.GetInstance();
         }
 
+        public bool ControleAuthentification(Admin admin)
+        {
+            List<Object[]> result = new List<Object[]>();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@nom", admin.Nom);
+            parameters.Add("@prenom", admin.Prenom);
+            parameters.Add("@pwd", HashWithSha256(admin.Pwd));
+            try
+            {
+                result = this.access.Manager.ReqSelect("select * from developpeur where nom = @nom and prenom = @prenom and pwd = @pwd and idprofil = 5", parameters);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (result.Count == 0 || result is null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public List<Developpeur> GetLesDeveloppeurs(List<Profil> lesProfils)
         {
             List<Developpeur> lesDevs = new List<Developpeur>();

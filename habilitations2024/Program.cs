@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using habilitations2024.view;
 
 namespace Habilitations2024
 {
@@ -18,7 +19,7 @@ namespace Habilitations2024
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
-                Application.Run(new FrmHabilitations());
+                Application.Run(new FrmAuthentification());
             }
             catch (Exception ex)
             {

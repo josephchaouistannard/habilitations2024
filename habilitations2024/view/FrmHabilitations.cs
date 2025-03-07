@@ -27,7 +27,7 @@ namespace Habilitations2024
 
         public FrmHabilitations()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         public void RefreshData()
@@ -210,6 +210,11 @@ namespace Habilitations2024
             {
                 ResetDisplay();
             }
+        }
+
+        private void FrmHabilitations_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
